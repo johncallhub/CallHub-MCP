@@ -1,0 +1,102 @@
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment variables
+.env
+.venv
+env/
+venv/
+ENV/
+.pytest_cache/
+
+# Credentials
+.env.local
+.env.*.local
+credentials.json
+*_key.json
+*_keys.json
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.directory
+.Trash-*
+$RECYCLE.BIN/
+
+# IDE files
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.sublime-workspace
+*.sublime-project
+.spyderproject
+.spyproject
+.ropeproject
+.project
+.pydevproject
+.settings/
+.classpath
+.factorypath
+
+# Temp files
+.temp/
+.tmp/
+tmp/
+temp/
+.cache/
+*.swp
+*.swo
+*~
+
+# Local data
+*.csv
+*.xlsx
+*.xls
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!.json
+!example*.json
+
+# Exception files
+!.env.example
+!requirements.txt
+!example_data/*.csv
+!example_data/*.json
