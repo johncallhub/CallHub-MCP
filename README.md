@@ -146,9 +146,36 @@ Can you show me all the teams in my CallHub account? I'd like to create a new ag
 First, I need to check the teams in my client account. Then, create a similar team structure in my personal account.
 ```
 
+## Server Restart Guidelines
+
+The CallHub MCP server must be restarted manually by the user after any code changes.
+If you're using Claude or another AI assistant to modify this code:
+
+1. The AI should NEVER assume a restart has occurred
+2. The AI should ALWAYS pause after suggesting code changes
+3. The AI should explicitly ask the user to restart the server
+4. The AI should wait for confirmation before proceeding with testing
+
+This is critical for ensuring code changes take effect before testing.
+
 ## Error Handling
 
 The MCP implements robust error handling with automatic retries for transient errors and rate limiting. Error responses include detailed information about what went wrong and potential solutions.
+
+## Agent Activation Workflow
+
+When new agents are created via the API, they exist in a 'pending' state and must verify their email before becoming active. These pending agents are:
+- NOT visible through the standard listAgents API (even with include_pending=true)
+- NOT manageable through direct API calls
+- Only accessible through the activation exports workflow
+
+To activate pending agents:
+1. Use exportAgentActivationUrls or getAgentActivationExportUrl to obtain the export URL
+2. User downloads the activation CSV file from the CallHub UI
+3. Process the CSV using processAgentActivationCsv or related functions
+4. Activate agents using activateAgentsWithPassword or activateAgentsWithBatchPassword
+
+IMPORTANT: NEVER create new test agents to check activation status - this workflow is specifically designed because pending agents are not accessible through direct API calls.
 
 ## Security Considerations
 
