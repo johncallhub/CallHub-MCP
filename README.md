@@ -1,4 +1,4 @@
-# CallHub MCP Server
+# CallHub MCP (Model Control Panel)
 
 A Claude-powered tool for managing CallHub resources via API
 
@@ -115,81 +115,12 @@ CALLHUB_CLIENT_BASE_URL=https://api-na1.callhub.io
 
 You can use any descriptive name for your accounts (letters, numbers, and underscores only). The account name is extracted from the environment variable name - for example, `CALLHUB_PERSONAL_API_KEY` creates an account named "personal" that you can reference in API calls.
 
-To use a specific account for an API call, include the `account` parameter:
-
+To use a specific account for an API call, just mention the account name to Claude in natural language:
 ```
-listContacts(account="personal")
+Claude, can you list the teams in my personal account?
 ```
 
 If no account is specified, the "default" account is used.
-
-## Common Workflows
-
-### Managing Contacts
-
-1. List existing contacts:
-   ```
-   listContacts()
-   ```
-
-2. Create a new contact:
-   ```
-   createContact(contact_fields="contact=1234567890&first_name=John&last_name=Doe")
-   ```
-
-3. Get contact details:
-   ```
-   getContact(contactId="123456")
-   ```
-
-4. Update a contact:
-   ```
-   updateContact(update_fields="contact=1234567890&email=john@example.com")
-   ```
-
-### Managing Phonebooks
-
-1. Create a phonebook:
-   ```
-   createPhonebook(phonebook_fields="name=My Phonebook&description=A test phonebook")
-   ```
-
-2. Add contacts to phonebook:
-   ```
-   addContactsToPhonebook(phonebookId="123456", contactIds=["789012", "345678"])
-   ```
-
-3. Get phonebook details:
-   ```
-   getPhonebook(phonebookId="123456")
-   ```
-
-### Managing Agents
-
-1. List teams:
-   ```
-   listTeams()
-   ```
-
-2. Create a team:
-   ```
-   createTeam(name="Sales Team")
-   ```
-
-3. Create an agent:
-   ```
-   createAgent(email="agent@example.com", username="agent1", team="Sales Team")
-   ```
-
-4. Activate agents:
-   ```
-   getAgentActivationExportUrl()
-   ```
-   Follow the instructions to download the activation CSV, then:
-   ```
-   processAgentActivationCsv(csv_content="...")
-   activateAgentsWithPassword(activation_data=[...], password="SecurePass123")
-   ```
 
 ## Example Conversations with Claude
 
@@ -208,6 +139,11 @@ I'd like to create a new contact with phone number 1234567890, first name John, 
 ### Agent Management
 ```
 Can you show me all the teams in my CallHub account? I'd like to create a new agent in the "Sales" team.
+```
+
+### Using Multiple Accounts
+```
+First, I need to check the teams in my client account. Then, create a similar team structure in my personal account.
 ```
 
 ## Error Handling
