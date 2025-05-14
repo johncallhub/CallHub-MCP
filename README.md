@@ -1,4 +1,4 @@
-# CallHub MCP (Model Control Panel)
+# CallHub MCP Server
 
 A Claude-powered tool for managing CallHub resources via API
 
