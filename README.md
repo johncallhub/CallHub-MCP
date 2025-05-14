@@ -94,25 +94,34 @@ To use the CallHub MCP with Claude, you need to add it to Claude's configuration
 
 ## Configuration
 
-Configuration is stored in the `.env` file with the following format:
+CallHub MCP supports multiple accounts with descriptive names. Configuration is stored in the `.env` file:
 
 ```
+# Default account
 CALLHUB_DEFAULT_USERNAME=your_username
 CALLHUB_DEFAULT_API_KEY=your_api_key
 CALLHUB_DEFAULT_BASE_URL=https://api-na1.callhub.io
+
+# Personal account
+CALLHUB_PERSONAL_USERNAME=personal_username
+CALLHUB_PERSONAL_API_KEY=personal_api_key
+CALLHUB_PERSONAL_BASE_URL=https://api-na1.callhub.io
+
+# Client account
+CALLHUB_CLIENT_USERNAME=client_username
+CALLHUB_CLIENT_API_KEY=client_api_key
+CALLHUB_CLIENT_BASE_URL=https://api-na1.callhub.io
 ```
 
-You can configure multiple accounts by using different prefixes:
+You can use any descriptive name for your accounts (letters, numbers, and underscores only). The account name is extracted from the environment variable name - for example, `CALLHUB_PERSONAL_API_KEY` creates an account named "personal" that you can reference in API calls.
+
+To use a specific account for an API call, include the `account` parameter:
 
 ```
-CALLHUB_ACCOUNT1_USERNAME=account1_username
-CALLHUB_ACCOUNT1_API_KEY=account1_api_key
-CALLHUB_ACCOUNT1_BASE_URL=https://api-na1.callhub.io
-
-CALLHUB_ACCOUNT2_USERNAME=account2_username
-CALLHUB_ACCOUNT2_API_KEY=account2_api_key
-CALLHUB_ACCOUNT2_BASE_URL=https://api-na1.callhub.io
+listContacts(account="personal")
 ```
+
+If no account is specified, the "default" account is used.
 
 ## Common Workflows
 
